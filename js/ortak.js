@@ -199,9 +199,9 @@ var ROZETLER = [
   { k: 'schulte', r: '🔢', a: 'Tablo Ustası', d: '5×5 Schulte tablosunu 45 saniyenin altında bitirdin.' },
   { k: 'kelime30', r: '📚', a: 'Kelime Avcısı', d: '30 yeni kelime öğrendin.' },
   { k: 'kitap10', r: '📖', a: '10 Metin', d: '10 metin okuyup soruları cevapladın.' },
-  { k: 'farkindalik', r: '🪞', a: 'Kendini Tanıyan', d: '5 okumada ne kadar anladığını tam isabetle tahmin ettin.' },
+  { k: 'farkindalik', r: '🧠', a: 'Kendini Tanıyan', d: '5 okumada ne kadar anladığını tam isabetle tahmin ettin.' },
   { k: 'tekrar', r: '🔁', a: 'Akıcı Okur', d: 'Tekrarlı okumada hızını %20 artırdın.' },
-  { k: 'sesli', r: '🎤', a: 'Sesli Okur', d: 'Sesli okuma ölçümü yaptın.' }
+  { k: 'sesli', r: '🗣️', a: 'Sesli Okur', d: 'Sesli okuma ölçümü yaptın.' }
 ];
 function rozetVer(k) {
   var p = P(); if (!p || p.rozetler[k]) return;

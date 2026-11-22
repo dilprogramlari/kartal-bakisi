@@ -151,7 +151,7 @@ var PROZODI = [
 ];
 function sesliOlcum() {
   var e = ekranTemizle(); cikisFn = null;
-  e.appendChild(el('h1', { text: '🎤 Sesli okuma ölçümü' }));
+  e.appendChild(el('h1', { text: '🗣️ Sesli okuma ölçümü' }));
   e.appendChild(el('div', { class: 'bilgi', html: 'Bu ölçüm bir <b>yetişkinle (veli ya da öğretmen)</b> birlikte yapılır. Öğrenci metni <b>1 dakika</b> boyunca sesli okur; yetişkin, yanlış okunan kelimelere ekranda dokunur. Sonunda <b>dakikada doğru okunan kelime</b> ve <b>doğruluk oranı</b> hesaplanır; yetişkin ayrıca okumanın akıcılığını kısa bir ölçekle değerlendirir.' }));
   var sec = el('select', { style: 'width:100%' });
   window.METINLER.filter(function (m) { return m.id[0] !== 'T'; }).forEach(function (m) { sec.appendChild(el('option', { value: m.id, text: m.baslik + ' (' + okunabilirlik(m.metin).etiket + ')' })); });
@@ -202,7 +202,7 @@ function sesliOlcum() {
         kayitEkle({ tur: 'sesli', metin: m.id, dks: dks, dogruluk: dogruluk, yanlis: yanlis, okunan: okunan, prozodi: pz, sure: Math.round(gecen) });
         cikisFn = null; var e3 = ekranTemizle();
         var duzey = dogruluk >= 95 ? ['basari', 'Doğruluk %95 ve üstü: Bu metni <b>rahatça, kendi başına</b> okuyabiliyor.'] : dogruluk >= 90 ? ['bilgi', 'Doğruluk %90–94: Metin biraz zorlayıcı; <b>destekle</b> okumaya uygun. Tekrarlı okuma ve dinleyerek okuma yararlı olur.'] : ['uyari', 'Doğruluk %90\'ın altında: Bu metin şu an <b>zor</b> geliyor. Daha kolay metinlerle, tekrarlı ve dinleyerek okumayla çalışmak iyi olur. Okuma güçlüğü sürüyorsa bir uzmana danışın.'];
-        e3.appendChild(sonucKutusu('🎤 Sesli okuma sonucu', [['Doğru okunan kelime/dk', String(dks)], ['Doğruluk', '%' + dogruluk + ' (' + yanlis + ' hata / ' + okunan + ' kelime)'], ['Akıcılık ölçeği', pz + ' / 16']],
+        e3.appendChild(sonucKutusu('🗣️ Sesli okuma sonucu', [['Doğru okunan kelime/dk', String(dks)], ['Doğruluk', '%' + dogruluk + ' (' + yanlis + ' hata / ' + okunan + ' kelime)'], ['Akıcılık ölçeği', pz + ' / 16']],
           [duzey, ['bilgi kucuk', 'Sesli okuma, sessiz okumadan doğal olarak daha yavaştır. Bu ölçümü 2–3 haftada bir, <b>daha önce okunmamış</b> benzer zorlukta metinlerle tekrarlayarak gelişimi izleyin.']]));
         e3.appendChild(el('p', { class: 'orta' }, [el('button', { class: 'btn buyuk', text: 'Tamam', onclick: sesliOlcum })]));
         rozetGoster();

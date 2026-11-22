@@ -1,5 +1,5 @@
 /* Yalnızca https üzerinden yayımlanınca çalışır: programı telefona kurulabilir ve internetsiz yapar */
-var SURUM = 'kartal-bakisi-v2';
+var SURUM = 'kartal-bakisi-v3';
 var DOSYALAR = ['./', 'index.html', 'stil.css', 'ikon.svg', 'manifest.json', 'veri/metinler.js', 'veri/kelimeler.js',
   'js/ortak.js', 'js/egzersizler.js', 'js/okuma.js', 'js/program.js', 'js/ekler.js', 'js/sayfalar.js'];
 self.addEventListener('install', function (e) { e.waitUntil(caches.open(SURUM).then(function (c) { return c.addAll(DOSYALAR.map(function (d) { return new Request(d, { cache: 'reload' }); })); })); self.skipWaiting(); });

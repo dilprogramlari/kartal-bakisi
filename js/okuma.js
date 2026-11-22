@@ -6,7 +6,7 @@ var YONTEMLER = {
   rehberli: { ad: 'Rehberli okuma', simge: '🖍️', kisa: 'Satır izleyiciyi takip et, geri dönme.' },
   grup: { ad: 'Kelime gruplarıyla okuma', simge: '🧩', kisa: 'Kelimeleri tek tek değil, gruplar hâlinde oku.' },
   rsvp: { ad: 'Tek noktada okuma', simge: '🎯', kisa: 'Kelimeler ekranın ortasında art arda akar.' },
-  dinle: { ad: 'Dinleyerek okuma', simge: '🎧', kisa: 'Metni dinlerken okunan kelimeyi gözünle izle.' }
+  dinle: { ad: 'Dinleyerek okuma', simge: '👂', kisa: 'Metni dinlerken okunan kelimeyi gözünle izle.' }
 };
 
 function metinKur(m, sinif) {
@@ -182,7 +182,7 @@ EGZ.okuma = {
       var sesler = speechSynthesis.getVoices(), tr = sesler.filter(function (v) { return /^tr/i.test(v.lang); })[0];
       var mk = metinKur(m, 'rehber'); var dur = false;
       if (!tr && sesler.length) kap.appendChild(el('div', { class: 'uyari kucuk', text: 'Bu cihazda Türkçe ses bulunamadı; okuma başka bir dilin sesiyle yapılabilir. Cihaz ayarlarından Türkçe ses ekleyebilirsin.' }));
-      kap.appendChild(el('div', { class: 'satir-arasi', style: 'position:sticky;top:3.4rem;z-index:5;background:var(--bg);padding:.3rem 0' }, [el('b', { text: '🎧 Dinle ve gözünle izle' }),
+      kap.appendChild(el('div', { class: 'satir-arasi', style: 'position:sticky;top:3.4rem;z-index:5;background:var(--bg);padding:.3rem 0' }, [el('b', { text: '👂 Dinle ve gözünle izle' }),
         kontrolCubugu(function (d) { dur = d; d ? speechSynthesis.pause() : speechSynthesis.resume(); })]));
       kap.appendChild(mk.kutu);
       var pi = 0, onceki = null; baslangicZ = performance.now();

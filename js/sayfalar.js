@@ -32,7 +32,7 @@ function menu() {
     ['🏠', 'Ana sayfa', anaSayfa], ['▶️', 'Bugünkü antrenman', function () { antrenmanGiris(); }],
     ['🏋️', 'Serbest alıştırmalar', alistirmalar], ['📚', 'Okuma kütüphanesi', kutuphane],
     ['📈', 'İlerlemem', ilerleme], ['📒', 'Kelime defterim', kelimeDefteri],
-    ['🎤', 'Sesli okuma ölçümü (veli/öğretmenle)', sesliOlcum], ['👩‍🏫', 'Öğretmen: sınıf görünümü', sinifGorunumu],
+    ['🗣️', 'Sesli okuma ölçümü (veli/öğretmenle)', sesliOlcum], ['👩‍🏫', 'Öğretmen: sınıf görünümü', sinifGorunumu],
     ['❓', 'Nasıl kullanılır?', rehber], ['⚙️', 'Ayarlar ve yedekleme', ayarlar], ['👥', 'Profil değiştir', profilSec]
   ];
   var kutu = el('div');
@@ -98,7 +98,7 @@ function uyarilar(ilk) {
     ['🎯', 'Önce anla, sonra hızlan', 'Anlamadan okunan metin okunmuş sayılmaz. Hız artarken anlama %70\'in altına düşerse yavaşla.'],
     ['👁️', 'Gözlerini koru', 'Gözlüğün varsa tak. Ekrana bir kol boyu uzaklıkta otur. <b>Gözün ağrır, sulanır, bulanık görürsen ya da başın ağrırsa hemen ara ver.</b> Bu durum tekrar ediyorsa ailene söyle ve bir göz doktoruna görün.'],
     ['⏱️', 'Fazlası zarar', 'Günde 25 dakikadan fazla ekran egzersizi yapma. Her 20 dakikada bir 20 saniye uzağa bak (20-20-20 kuralı).'],
-    ['💡', 'Işığa duyarlıysan', 'Hızlı yanıp sönen görüntüler seni rahatsız ediyorsa ya da daha önce ışığa bağlı bir rahatsızlık yaşadıysan Ayarlar\'dan <b>“Işık hassasiyeti”</b> seçeneğini aç ve ailene danış.'],
+    ['📌', 'Işığa duyarlıysan', 'Hızlı yanıp sönen görüntüler seni rahatsız ediyorsa ya da daha önce ışığa bağlı bir rahatsızlık yaşadıysan Ayarlar\'dan <b>“Işık hassasiyeti”</b> seçeneğini aç ve ailene danış.'],
     ['📖', 'Asıl antrenman kitap', 'Programdaki teknikleri her gün kendi kitabını okurken de kullan. Günde en az 20 dakika kitap okumak programın etkisini katlar.'],
     ['🤝', 'Dürüst ol', 'Testleri kendi gerçek hızınla yap; metne geri bakarak soru cevaplama. Böylece gelişimini doğru görürsün.']
   ];
@@ -131,7 +131,7 @@ function anaSayfa() {
   var p = P(); if (!p) return profilSec();
   var e = ekranTemizle(); cikisFn = null;
   var g = sonrakiGun(), gun = PROGRAM[Math.min(g, 30)], hafta = HAFTALAR[gun.hafta];
-  e.appendChild(el('h1', { text: 'Merhaba ' + p.ad + ' 👋' }));
+  e.appendChild(el('h1', { text: 'Hoş geldin ' + p.ad + ' 👋' }));
 
   // nazik uyarılar
   var son = p.calisilanGunler[p.calisilanGunler.length - 1];
@@ -175,7 +175,7 @@ function anaSayfa() {
 
   var iz = el('div', { class: 'izgara' });
   [['🏋️', 'Serbest alıştırmalar', 'Tüm egzersizler, istediğin ayarla', alistirmalar], ['📚', 'Kütüphane', 'Okuduğun metinleri farklı yöntemlerle tekrar oku', kutuphane],
-   ['📒', 'Kelime defterim', Object.keys(p.kelimeler).length + ' kelime', kelimeDefteri], ['🎤', 'Sesli okuma ölçümü', 'Bir yetişkinle 1 dakikalık akıcılık ölçümü', sesliOlcum],
+   ['📒', 'Kelime defterim', Object.keys(p.kelimeler).length + ' kelime', kelimeDefteri], ['🗣️', 'Sesli okuma ölçümü', 'Bir yetişkinle 1 dakikalık akıcılık ölçümü', sesliOlcum],
    ['❓', 'Nasıl kullanılır?', 'Rehber, ipuçları, sağlık uyarıları', rehber]]
     .forEach(function (x) { iz.appendChild(el('div', { class: 'kart', onclick: x[3] }, [el('div', { class: 'simge', text: x[0] }), el('h3', { text: x[1] }), el('p', { class: 'soluk kucuk', text: x[2], style: 'margin:0' })])); });
   e.appendChild(iz);
@@ -240,7 +240,7 @@ function antrenmanBitti(g, sonuclar) {
   var e = ekranTemizle(); cikisFn = null;
   var ok = sonuclar.filter(function (k) { return k.kh; })[0];
   e.appendChild(el('div', { class: 'kart orta vurgulu' }, [
-    el('div', { text: g === 30 ? '🦅' : '🎉', style: 'font-size:3.5rem' }),
+    el('div', { text: g === 30 ? '🦅' : '🌟', style: 'font-size:3.5rem' }),
     el('h1', { text: g === 0 ? 'Harika bir başlangıç!' : g === 30 ? 'Programı bitirdin!' : 'Gün ' + g + ' tamam!' }),
     el('p', { html: '🔥 Serin: <b>' + p.seri + ' gün</b>' + (ok ? ' • Bugünkü etkili okuma hızın: <b>' + ok.eoh + ' kelime/dk</b>' : '') })
   ]));
@@ -333,7 +333,7 @@ function kutuphane() {
   var AMAC = { ders: [0.85, 'Ders çalışmak / iyice öğrenmek', 'Yavaş ve dikkatli oku; önemli yerlerde dur, kendine soru sor.'], genel: [1, 'Genel bilgi edinmek', 'Hedef hızında, anlayarak oku.'], goz: [1.4, 'Hızlıca göz gezdirmek', 'Ayrıntıya takılma; ana fikri ve önemli kelimeleri yakala.'] };
   var amac = el('select'), amacBilgi = el('p', { class: 'soluk kucuk' });
   Object.keys(AMAC).forEach(function (a) { amac.appendChild(el('option', { value: a, text: AMAC[a][1] })); }); amac.value = 'genel';
-  function amacYaz() { var a = AMAC[amac.value]; amacBilgi.innerHTML = '💡 ' + a[2] + ' Bu amaçla hız ayarlı yöntemlerde hızın: <b>' + yuvarla(hedefHiz() * a[0], 5) + ' kelime/dk</b> (hedefin ' + hedefHiz() + ').'; }
+  function amacYaz() { var a = AMAC[amac.value]; amacBilgi.innerHTML = '📌 ' + a[2] + ' Bu amaçla hız ayarlı yöntemlerde hızın: <b>' + yuvarla(hedefHiz() * a[0], 5) + ' kelime/dk</b> (hedefin ' + hedefHiz() + ').'; }
   amac.onchange = amacYaz; amacYaz();
   var carpan = function () { return AMAC[amac.value][0]; };
   e.appendChild(el('div', { class: 'kart' }, [el('div', { class: 'form-satir' }, [el('label', { text: 'Okuma yöntemi' }), yontem, ' ', grup]),
@@ -397,7 +397,7 @@ function ilerleme() {
   var tk = p.kayitlar.filter(function (k) { return k.tur === 'tekrar'; }), ss = p.kayitlar.filter(function (k) { return k.tur === 'sesli'; });
   var th = p.kayitlar.filter(function (k) { return k.tahmin && k.an != null && k.tur !== 'kendi'; });
   if (tk.length || ss.length || th.length) {
-    var ek = el('div', { class: 'kart' }, [el('h3', { text: '🔁 🎤 🤔 Diğer ölçümler', style: 'margin-top:0' })]);
+    var ek = el('div', { class: 'kart' }, [el('h3', { text: '🔁 🗣️ 🤔 Diğer ölçümler', style: 'margin-top:0' })]);
     if (tk.length) ek.appendChild(el('p', { html: '<b>Tekrarlı okuma:</b> ' + tk.map(function (k) { var m = metinBul(k.metin); return (m ? m.baslik : '') + ' ' + k.kh1 + '→' + k.kh; }).join(' • ') }));
     if (ss.length) { var sn_ = ss[ss.length - 1]; ek.appendChild(el('p', { html: '<b>Sesli okuma (son):</b> dakikada ' + sn_.dks + ' doğru kelime, doğruluk %' + sn_.dogruluk + ', akıcılık ' + sn_.prozodi + '/16 (' + ss.length + ' ölçüm)' })); }
     if (th.length) { var isabet = th.filter(function (k) { return k.tahmin === tahminSeviye(k.an); }).length; ek.appendChild(el('p', { html: '<b>Kendini tahmin:</b> ' + th.length + ' okumanın ' + isabet + '\'inde ne kadar anladığını tam isabetle tahmin ettin.' })); }
@@ -553,7 +553,7 @@ function rehber() {
     ['📏 Ölçüler ne demek?', '<b>Okuma hızı:</b> dakikada okuduğun kelime sayısı (kelime/dk).<br><b>Anlama:</b> metinden sonra sorulan 5 sorudaki doğru oranın.<br><b>Etkili okuma hızı:</b> okuma hızı × anlama. Örneğin dakikada 200 kelime okuyup %80 anlarsan etkili hızın 160\'tır. Program asıl olarak bu sayıyı artırmayı hedefler.<br><b>Hedef hız:</b> anlaman %80 ve üstündeyse yükselir, %60\'ın altındaysa düşer.'],
     ['🧠 Hızlı okuma hakkında doğru bilinenler', '<ul><li>Hiç kimse anlamadan “fotoğraf çeker gibi” sayfa okuyamaz. Abartılı vaatlere inanma.</li><li>Okumayı en çok yavaşlatan şeyler: <b>geri dönüp tekrar okumak</b>, kelimeleri tek tek okumak, dikkatin dağılması ve bilinmeyen kelimeler. Program bunların hepsi üzerinde çalışır.</li><li>İyi okur, okuma hızını <b>amaca göre</b> ayarlar: ders çalışırken daha yavaş ve dikkatli, bir bilgiyi ararken hızlı (tarama), genel fikir için göz atarak.</li><li>Ne kadar çok okursan o kadar hızlanırsın. Kelime hazinen genişledikçe hızın da artar.</li></ul>'],
     ['🏋️ Egzersizler ne işe yarar?', '<b>Göz ısınması:</b> dikkati toplar, okumaya hazırlar.<br><b>Schulte tablosu ve Görüş alanı:</b> dikkat, odaklanma ve görsel tarama oyunları (tek başına hız kazandırmaz).<br><b>Harf avı ve Aynı-Farklı:</b> dikkat ve harfleri hızlı ayırt etme.<br><b>Şimşek kelime:</b> kelimeleri bir bakışta tanıma.<br><b>Rehberli okuma:</b> geri dönmeyi önler, düzenli akış kazandırır.<br><b>Kelime gruplarıyla okuma:</b> anlam birimleri hâlinde okuma.<br><b>Tek noktada okuma:</b> odaklanma.<br><b>Göz atma ve Tarama:</b> amaca göre okuma stratejileri.<br><b>Kelime hazinesi:</b> takılmadan okumak için.<br><b>Göz dinlendirme:</b> göz sağlığını korur.'],
-    ['🆕 Diğer araçlar', '<b>🔁 Tekrarlı okuma:</b> Aynı metni üç kez okursun; akıcılığın her turda artar. Okuma akıcılığını geliştirmede araştırmalarla desteklenen bir yöntemdir.<br><b>🎧 Dinleyerek okuma:</b> Cihaz metni seslendirir, sen okunan kelimeyi gözünle izlersin (Kütüphane → yöntem).<br><b>📄 Kendi metnim:</b> Ders kitabından bir metni yapıştırıp istediğin yöntemle okuyabilirsin.<br><b>🎯 Okuma amacı:</b> Ders çalışırken yavaş, göz gezdirirken hızlı: Kütüphane\'de amacını seç, hız ona göre ayarlanır.<br><b>🤔 Ne kadar anladım?</b> Her okumadan sonra anlamanı tahmin edersin; sorularla karşılaştırılır. Kendi anlamasını doğru tahmin etmek iyi okurların becerisidir.<br><b>🎤 Sesli okuma ölçümü:</b> Bir yetişkinle 1 dakikalık sesli okuma; dakikada doğru okunan kelime, doğruluk ve akıcılık ölçeği.<br><b>👩‍🏫 Sınıf görünümü:</b> Öğretmen, öğrencilerin yedek dosyalarını tek tabloda görür ve Excel\'e aktarır.'],
+    ['🆕 Diğer araçlar', '<b>🔁 Tekrarlı okuma:</b> Aynı metni üç kez okursun; akıcılığın her turda artar. Okuma akıcılığını geliştirmede araştırmalarla desteklenen bir yöntemdir.<br><b>👂 Dinleyerek okuma:</b> Cihaz metni seslendirir, sen okunan kelimeyi gözünle izlersin (Kütüphane → yöntem).<br><b>📄 Kendi metnim:</b> Ders kitabından bir metni yapıştırıp istediğin yöntemle okuyabilirsin.<br><b>🎯 Okuma amacı:</b> Ders çalışırken yavaş, göz gezdirirken hızlı: Kütüphane\'de amacını seç, hız ona göre ayarlanır.<br><b>🤔 Ne kadar anladım?</b> Her okumadan sonra anlamanı tahmin edersin; sorularla karşılaştırılır. Kendi anlamasını doğru tahmin etmek iyi okurların becerisidir.<br><b>🗣️ Sesli okuma ölçümü:</b> Bir yetişkinle 1 dakikalık sesli okuma; dakikada doğru okunan kelime, doğruluk ve akıcılık ölçeği.<br><b>👩‍🏫 Sınıf görünümü:</b> Öğretmen, öğrencilerin yedek dosyalarını tek tabloda görür ve Excel\'e aktarır.'],
     ['🚫 Neden bazı “hızlı okuma” iddialarına yer vermedik?', '<ul><li>“Dakikada 1000+ kelime anlayarak okuma” gibi vaatlerin bilimsel dayanağı yoktur; hız arttıkça anlama düşer.</li><li>Göz egzersizleri ve görüş alanı çalışmaları dikkat ve odaklanma oyunlarıdır; okuma hızını tek başına artırmaz. Okumada asıl belirleyici olan dil ve anlama becerisidir: kelime bilgisi, bol okuma, akıcılık.</li><li>Kelimelerin ilk harflerini kalın yazma (“biyonik okuma”) gibi yöntemlerin hız kazandırdığı araştırmalarda gösterilmemiştir.</li><li>“İç sesi tamamen susturmak” mümkün değildir ve gerekli değildir; anlamayı destekler.</li></ul>'],
     ['⚠️ Sağlık ve güvenlik', '<ul><li>Gözlüğün varsa tak; ekranla aranda bir kol boyu mesafe olsun; ortam aydınlık olsun.</li><li>Günde 25 dakikadan fazla ekran egzersizi yapma. 20-20-20 kuralına uy.</li><li><b>Gözün ağrır, sulanır, bulanık görürsen, başın ağrır ya da başın dönerse hemen bırak ve dinlen.</b> Tekrarlarsa ailene söyle ve bir göz doktoruna görün.</li><li>Işığa duyarlıysan Ayarlar\'dan “Işık hassasiyeti”ni aç.</li><li>Yatarken, araç içinde ya da karanlıkta çalışma.</li></ul>'],
     ['👨‍👩‍👧 Veliler ve öğretmenler için', '<ul><li>Program, öğrencinin kendi başlangıcına göre gelişimini izler; öğrencileri birbiriyle karşılaştırmak için tasarlanmamıştır.</li><li><b>İlerlemem → Rapor</b> ile yazdırılabilir gelişim raporu, program sonunda <b>Başarı belgesi</b> alınabilir.</li><li>Sınıfta tek bilgisayarda çok öğrenci kullanacaksa her öğrenci kendi profilini açar; gerekirse Ayarlar\'dan günlük sınır kapatılabilir.</li><li>Öğrenciyi düzenli çalışması için cesaretlendirin; hızdan çok anlamayı övün.</li><li>Okuma güçlüğü (harfleri karıştırma, satır atlama, okurken çok çabuk yorulma) belirgin ve sürekliyse bir uzmana danışın; bu program bir tedavi aracı değildir.</li></ul>'],
