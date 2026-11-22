@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kartal Bakışı – Anlayarak Hızlı Okuma</title>
+<meta name="description" content="Ortaokul öğrencileri için ücretsiz, internetsiz, anlayarak hızlı okuma eğitim programı.">
+<meta name="theme-color" content="#1f6f8b">
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<header class="ust">
+  <button class="logo" id="logoBtn" title="Ana sayfa" aria-label="Ana sayfa">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32 C18 14 46 14 58 32 C46 50 18 50 6 32 Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><circle cx="32" cy="32" r="9" fill="#e8a33d"/><circle cx="34" cy="30" r="3" fill="#fff"/></svg>
+    <span>Kartal Bakışı</span>
+  </button>
+  <span class="bosluk"></span>
+  <span class="kisi" id="kisiAd"></span>
+  <button class="ikon" id="boyutBtn" title="Yazı boyutu" aria-label="Yazı boyutu">Aa</button>
+  <button class="ikon" id="temaBtn" title="Açık / koyu tema" aria-label="Tema">◐</button>
+  <button class="ikon" id="menuBtn" title="Menü" aria-label="Menü">☰</button>
+</header>
+<main id="ekran"><p>Yükleniyor…</p><noscript>Bu programın çalışması için tarayıcıda JavaScript açık olmalıdır.</noscript></main>
+<footer class="ko-imza"><svg class="imza-logo" viewBox="4 25 102 32" width="64" height="20" role="img" aria-label="imza"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M8 40 C24 30 40 30 52 42 L55 38 L58 42 C70 30 86 30 102 40"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7" d="M52 42 L55 52 L58 42"/></svg></footer>
+<script src="veri/metinler.js"></script>
+<script src="veri/kelimeler.js"></script>
+<script src="js/ortak.js"></script>
+<script src="js/egzersizler.js"></script>
+<script src="js/okuma.js"></script>
+<script src="js/program.js"></script>
+<script src="js/ekler.js"></script>
+<script src="js/sayfalar.js"></script>
+<script>
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+}
+</script>
+</body>
+</html>
